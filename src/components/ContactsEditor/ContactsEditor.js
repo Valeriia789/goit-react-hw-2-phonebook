@@ -1,26 +1,7 @@
 import React, { Component } from 'react'
 
 class ContactsEditor extends Component {
-  state = {
-    contacts: [],
-    name: '',
-    number: ''
-  }
-
-  handleChenge = event => {
-    // console.log(event.currentTarget)
-    // console.log(event.currentTarget.name)
-    // console.log(event.currentTarget.value)
-    this.setState({
-      [event.currentTarget.name]: [event.currentTarget.value]
-    })
-  }
-
-  handleAdd = e => {
-    e.preventDefault();
-    console.log(this.state);
-  }
-
+ 
   render () {
     return (
       <form onSubmit={this.handleAdd}>
@@ -29,8 +10,8 @@ class ContactsEditor extends Component {
         <input
           type='text'
           name='name'
-          value={this.state.name}
-          onChange={this.handleChenge}
+          // value={this.state.name}
+          // onChange={this.handleChange}
           placeholder='Entet Name'
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -43,8 +24,8 @@ class ContactsEditor extends Component {
         <input
           type='tel'
           name='number'
-          value={this.state.number}
-          onChange={this.handleChenge}
+          // value={this.state.number}
+          // onChange={this.handleChenge}
           placeholder='Entet Phone Number'
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"

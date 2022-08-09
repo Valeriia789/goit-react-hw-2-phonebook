@@ -11,22 +11,35 @@ class App extends Component {
 
     this.state = {
       contacts: [],
-      name: '',
-      number: ''
+      name: ''
     }
   }
 
-  handleChenge = event => {
-    // console.log(event.currentTarget)
-    // console.log(event.currentTarget.name)
-    // console.log(event.currentTarget.value)
-    this.setState({
-      [event.currentTarget.name]: [event.currentTarget.value]
-    })
+  handleSubmit = event => {
+    event.preventDefault();
+    const newName = event.currentTarget.elements.name.value;
+    console.log(newName);
   }
 
-  addContact = text => {
-    console.log(text);
+  // handleChange = event => {
+  //   console.log(event.currentTarget)
+  //   console.log(event.currentTarget.name)
+  //   console.log(event.currentTarget.value)
+  //   this.setState({
+  //     [event.currentTarget.name]: [event.currentTarget.value]
+  //   })
+  // }
+
+  addContact = (name) => {
+    const newContact = {
+      id: nanoid(),
+      name
+    }
+    this.setState(prevState => {
+      return {
+        contacts: [...prevState.contacts, newContact]
+      }
+    })
   }
 
   deleteContact = contactId => {
@@ -38,18 +51,15 @@ class App extends Component {
   render () {
     const { contacts } = this.state
     const closeFriends = contacts.filter(contact => contact.close)
-
     // const closeFriends = contacts.reduce(
     //   (acc, contact) => (contact.close ? acc + 1 : acc),
     //   0
     // )
 
-    // console.log(Object.keys(this.state));
-    // console.log(Object.values(this.state));
-
     return (
       <>
-        <ContactsEditor onSubmit={this.addContact}></ContactsEditor>
+        <ContactsEditor onSubmit={this.handleSubmit}></ContactsEditor>
+
         <ul>
           <ContactsList
             contacts={contacts}
