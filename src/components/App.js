@@ -3,17 +3,30 @@ import { nanoid } from 'nanoid'
 // model.id = nanoid()
 import initialContacts from './initialContacts.json'
 import { ContactsList } from './Contacts/ContactsList'
+import ContactsEditor from './ContactsEditor/ContactsEditor'
 
 class App extends Component {
-  // Стан оголошується в конструкторі, оскільки це перше, що відбувається,
-  //  коли створюється екземпляр класу.
   constructor (props) {
     super(props)
 
     this.state = {
-      contacts: initialContacts,
-      name: ''
+      contacts: [],
+      name: '',
+      number: ''
     }
+  }
+
+  handleChenge = event => {
+    // console.log(event.currentTarget)
+    // console.log(event.currentTarget.name)
+    // console.log(event.currentTarget.value)
+    this.setState({
+      [event.currentTarget.name]: [event.currentTarget.value]
+    })
+  }
+
+  addContact = text => {
+    console.log(text);
   }
 
   deleteContact = contactId => {
@@ -21,54 +34,36 @@ class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== contactId)
     }))
   }
+
   render () {
+    const { contacts } = this.state
+    const closeFriends = contacts.filter(contact => contact.close)
+
+    // const closeFriends = contacts.reduce(
+    //   (acc, contact) => (contact.close ? acc + 1 : acc),
+    //   0
+    // )
+
     // console.log(Object.keys(this.state));
     // console.log(Object.values(this.state));
 
     return (
       <>
-        <form>
-          <label>
-            Name
-            <input
-              type='text'
-              name='name'
-              placeholder='Entet Name'
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-          </label>
-
-          <button type='submit'>Add contact</button>
-        </form>
-
+        <ContactsEditor onSubmit={this.addContact}></ContactsEditor>
         <ul>
           <ContactsList
-            contacts={this.state.contacts}
+            contacts={contacts}
             onDeleteContact={this.deleteContact}
           ></ContactsList>
         </ul>
+
+        <div>
+          <p>Total contacts: {contacts.length}</p>
+          <p>Close friends: {closeFriends.length}</p>
+        </div>
       </>
     )
   }
 }
 
 export default App
-
-// export const App = () => {
-//   return (
-//     <div
-//       style={{
-//         height: '100vh',
-//         display: 'flex',
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         fontSize: 40,
-//         color: '#010101'
-//       }}
-//     >
-//       React homework
-//     </div>
-//   );
-// };

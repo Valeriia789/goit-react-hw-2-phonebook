@@ -1,25 +1,30 @@
 [
   {
+    "close": true,
     "name": "Mango",
     "number": 25698520,
     "id": 1812
   },
   {
+    "close": true,
     "name": "Kiwi",
     "number": 2254655220,
     "id": 1137
   },
   {
+    "close": false,
     "name": "Ajax",
     "number": 540542542,
     "id": 1357
   },
   {
+    "close": false,
     "name": "Jay",
     "number": 5275205427,
     "id": 1895
   },
   {
+    "close": true,
     "name": "Poly",
     "number": 89452334532,
     "id": 1457
