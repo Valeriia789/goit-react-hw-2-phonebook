@@ -11,30 +11,17 @@ class App extends Component {
 
     this.state = {
       contacts: [],
-      name: ''
     }
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
-    const newName = event.currentTarget.elements.name.value;
-    console.log(newName);
-  }
 
-  // handleChange = event => {
-  //   console.log(event.currentTarget)
-  //   console.log(event.currentTarget.name)
-  //   console.log(event.currentTarget.value)
-  //   this.setState({
-  //     [event.currentTarget.name]: [event.currentTarget.value]
-  //   })
-  // }
-
-  addContact = (name) => {
+  addContact = (name, number) => {
     const newContact = {
       id: nanoid(),
-      name
+      name,
+      number,
     }
+
     this.setState(prevState => {
       return {
         contacts: [...prevState.contacts, newContact]
@@ -58,12 +45,13 @@ class App extends Component {
 
     return (
       <>
-        <ContactsEditor onSubmit={this.handleSubmit}></ContactsEditor>
+        <ContactsEditor onAddContact={this.addContact}></ContactsEditor>
 
         <ul>
           <ContactsList
             contacts={contacts}
             onDeleteContact={this.deleteContact}
+            // onAddContact={this.addContact}
           ></ContactsList>
         </ul>
 
