@@ -37,12 +37,15 @@ class App extends Component {
   //   })
   // }
 
-
   // findContact = contactName => {
   //   this.setState(prevState => ({
   //     contacts: prevState.contacts.filter(contact => contact.name === contactName)
   //   }))
   // }
+
+  updateData (config) {
+    this.setState(config)
+  }
 
   deleteContact = contactId => {
     this.setState(prevState => ({
@@ -58,13 +61,17 @@ class App extends Component {
     //   0
     // )
 
-    console.log();
+    console.log()
 
     return (
       <>
         <ContactsEditor onAddContact={this.addContact}></ContactsEditor>
 
-        <Filter value={filter} ></Filter>
+        <Filter
+          contacts={contacts}
+          filter={filter}
+          update={this.updateData.bind(this)}
+        ></Filter>
 
         <ul>
           <ContactsList
@@ -84,8 +91,6 @@ class App extends Component {
 
 export default App
 
-
-
-// беремо нейм (дані), що приходить в filter з інпута 
+// беремо нейм (дані), що приходить в filter з інпута
 // і шукаємо такий самий серед масиву обєктів contacts свойства name
 // і не розумію, куди їх рендерити (в список contacts?)
