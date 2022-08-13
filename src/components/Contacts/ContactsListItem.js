@@ -15,7 +15,7 @@ export const ContactsListItem = ({
 
     <label>
       <input type='checkbox' checked={group} onChange={onUpdate} />
-      Close contact
+      Best friend
     </label>
 
     <button type='button' onClick={onDelete}>
