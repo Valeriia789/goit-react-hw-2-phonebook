@@ -1,14 +1,27 @@
-export const ContactsList = ({ contacts, onDeleteContact }) => {
-  return (
-    <ul>
-      {contacts.map(contact => (
-        <li key={contact.id}>
-          <p> {contact.name} : </p>
-          <p> {contact.number} </p>
+import React from 'react'
+import PropTypes from 'prop-types'
+import { ContactsListItem } from './ContactsListItem'
 
-          <button onClick={() => onDeleteContact(contact.id)}>Delete</button>
-        </li>
-      ))}
-    </ul>
+export const ContactsList = ({
+  contacts,
+  onDeleteContact,
+  onUpdateContact
+}) => {
+  return (
+    <div>
+      <h2>Contacts</h2>
+      <ul>
+        {contacts.map(contact => (
+          <ContactsListItem
+            key={contact.id}
+            name={contact.name}
+            number={contact.number}
+            group={contact.group}
+            onDelete={() => onDeleteContact(contact.id)}
+            onUpdate={() => onUpdateContact(contact.id)}
+          />
+        ))}
+      </ul>
+    </div>
   )
 }

@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-class ContactsEditor extends Component {
+export default class ContactsEditor extends Component {
   state = {
     name: '',
     number: ''
   }
 
   handleChange = event => {
+    const { name, value } = event.target
+
     this.setState({
-      [event.target.name]: event.target.value
+      [name]: value
     })
 
     // console.log(event.target.name); //name, number
@@ -24,14 +27,17 @@ class ContactsEditor extends Component {
   }
 
   render () {
+    const { name, number } = this.state
+
     return (
       <form onSubmit={this.handleSubmit}>
+        <h2>Phonebook</h2>
         <label>
           Name
           <input
             type='text'
             name='name'
-            value={this.state.name}
+            value={name}
             onChange={this.handleChange}
             placeholder='Entet Name'
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -45,7 +51,7 @@ class ContactsEditor extends Component {
           <input
             type='tel'
             name='number'
-            value={this.state.number}
+            value={number}
             onChange={this.handleChange}
             placeholder='Entet Phone Number'
             pattern='\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}'
@@ -59,5 +65,3 @@ class ContactsEditor extends Component {
     )
   }
 }
-
-export default ContactsEditor

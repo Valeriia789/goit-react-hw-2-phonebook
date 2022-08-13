@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { nanoid } from 'nanoid'
-// model.id = nanoid()
+
 import initialContacts from './initialContacts.json'
 import { ContactsList } from './Contacts/ContactsList'
 import ContactsEditor from './ContactsEditor/ContactsEditor'
 import { Filter } from './Filter/Filter'
 
-class App extends Component {
+export default class App extends Component {
   constructor (props) {
     super(props)
 
@@ -17,80 +18,88 @@ class App extends Component {
   }
 
   addContact = (name, number) => {
-    const newContact = {
-      id: nanoid(),
-      name,
-      number
+    const { contacts } = this.state
+
+    if (contacts.map(contact => contact.name).includes(name)) {
+      alert(`${name} is already in contacts`)
+    } else {
+      const newContact = {
+        id: nanoid(),
+        name,
+        number,
+        group: false
+      }
+      this.setState(prevState => {
+        return {
+          contacts: [...prevState.contacts, newContact]
+        }
+      })
     }
+  }
+
+  deleteContact = contactId => {
     this.setState(prevState => {
       return {
-        contacts: [...prevState.contacts, newContact]
+        contacts: prevState.contacts.filter(({ id }) => id !== contactId)
       }
     })
   }
 
-  // findContact = event => {
-  //   this.state.contacts.filter(contact => {
-  //     return contact.name
-  //       .toLowerCase()
-  //       .includes(event.target.value.toLowerCase())
-  //   })
-  // }
-
-  // findContact = contactName => {
-  //   this.setState(prevState => ({
-  //     contacts: prevState.contacts.filter(contact => contact.name === contactName)
-  //   }))
-  // }
-
-  updateData (config) {
-    this.setState(config)
+  updateGroup = contactId => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.map(contact => {
+          if (contact.id === contactId) {
+            return {
+              ...contact,
+              group: !contact.group
+            }
+          }
+          return contact
+        })
+      }
+    })
   }
 
-  deleteContact = contactId => {
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== contactId)
-    }))
+  updateFilter = filter => {
+    this.setState({ filter })
+  }
+
+  getFilteredContacts = () => {
+    return this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    )
   }
 
   render () {
     const { contacts, filter } = this.state
-    const closeFriends = contacts.filter(contact => contact.close)
-    // const closeFriends = contacts.reduce(
-    //   (acc, contact) => (contact.close ? acc + 1 : acc),
+    const filteredContacts = this.getFilteredContacts()
+
+    const closeFriendsGroup = contacts.filter(contact => contact.group)
+    // const closeFriendsGroup = contacts.reduce(
+    //   (acc, contact) => (contact.group ? acc + 1 : acc),
     //   0
     // )
-
-    console.log()
 
     return (
       <>
         <ContactsEditor onAddContact={this.addContact}></ContactsEditor>
 
-        <Filter
-          contacts={contacts}
-          filter={filter}
-          update={this.updateData.bind(this)}
-        ></Filter>
+        <Filter value={filter} onUpdateFilter={this.updateFilter} />
 
-        <ul>
+        {filteredContacts.length > 0 && (
           <ContactsList
-            contacts={contacts}
+            contacts={filteredContacts}
             onDeleteContact={this.deleteContact}
-          ></ContactsList>
-        </ul>
+            onUpdateContact={this.updateGroup}
+          />
+        )}
 
         <div>
           <p>Total contacts: {contacts.length}</p>
-          <p>Close friends: {closeFriends.length}</p>
+          <p>Close friends: {closeFriendsGroup.length}</p>
         </div>
       </>
     )
   }
 }
-
-export default App
-
-// беремо нейм (дані), що приходить в filter з інпута
-// і шукаємо такий самий серед масиву обєктів contacts свойства name
-// і не розумію, куди їх рендерити (в список contacts?)
