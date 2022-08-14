@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { ListItem } from './ContactsListItem.styled'
+import { ListItem, DeleteButton } from './ContactsListItem.styled'
 
 export const ContactsListItem = ({
   name,
@@ -20,9 +20,9 @@ export const ContactsListItem = ({
       Best friend
     </label>
 
-    <button type='button' onClick={onDelete}>
-      Delete
-    </button>
+    <DeleteButton type='button' onClick={onDelete}>
+      Delete contact
+    </DeleteButton>
   </ListItem>
 )
 

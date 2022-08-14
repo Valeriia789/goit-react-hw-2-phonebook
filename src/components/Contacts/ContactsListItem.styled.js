@@ -7,12 +7,13 @@ export const ListItem = styled.li`
   justify-content: space-between;
   overflow: hidden;
 
+  max-width: ${props => props.theme.sizes.xl};
   margin-bottom: ${props => props.theme.space[5]}px;
   padding: ${props => props.theme.space[3]}px;
   border-radius: ${props => props.theme.radii.sm};
   border-left: ${props => props.theme.borders.decorBold};
   border-right: ${props => props.theme.borders.decorBold};
-  border-color: ${props => props.theme.colors.secondary};
+  border-color: ${props => props.theme.colors.backgroundAccent};
 
   box-shadow: ${props => props.theme.shadows.box};
   font-size: ${props => props.theme.fontSizes[3]}px;
@@ -21,5 +22,24 @@ export const ListItem = styled.li`
 
   &:hover {
     background-color: ${props => props.theme.colors.backgroundHover};
+  }
+`
+
+// export const contactInfo = styled.p`
+// `
+
+// export const Checkbox = styled.input`
+// `
+
+export const DeleteButton = styled.button`
+  cursor: pointer;
+  color: ${props => props.theme.colors.warning};
+  background-color: ${props => props.theme.colors.primary};
+
+  border-radius: ${props => props.theme.radii.sm};
+  border-color: ${props => props.theme.colors.warning};
+
+  &:hover {
+    box-shadow: ${props => props.theme.shadows.box};
   }
 `

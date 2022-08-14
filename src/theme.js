@@ -17,6 +17,7 @@ export const theme = {
     accent: 'goldenrod',
     backgroundAccent: 'gold',
     secondary: '#fcba30',
+    warning: 'red',
     // muted: '#f6f6f6',
     // accentMedium: '#d35400',
     // accentDark: '#c0392b',
