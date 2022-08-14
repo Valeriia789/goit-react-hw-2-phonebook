@@ -9,7 +9,6 @@ export const ContactsList = ({
 }) => {
   return (
     <>
-      <h2>Contacts</h2>
       <ul>
         {contacts.map(contact => (
           <ContactsListItem

@@ -5,10 +5,8 @@ export const Form = styled.form`
   flex-direction: column;
 
   width: ${props => props.theme.sizes.xxl};
-  margin-bottom: ${props => props.theme.space[5]}px;
-  padding: ${props => props.theme.space[6]}px;
+  margin-bottom: ${props => props.theme.space[8]}px;
   border-radius: ${props => props.theme.radii.sm};
-  /* box-shadow: ${props => props.theme.shadows.box}; */
 `
 
 // export const Title = styled.h2``
@@ -28,7 +26,7 @@ export const SubmitButton = styled.button`
   text-decoration: none;
   font-size: ${props => props.theme.fontSizes[4]}px;
   background-color: ${props => props.theme.colors.primary};
-  
+
   border: ${props => props.theme.borders.medium};
   border-color: ${props => props.theme.colors.accent};
   border-radius: ${props => props.theme.radii.sm};

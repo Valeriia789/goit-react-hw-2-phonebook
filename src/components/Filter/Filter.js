@@ -5,12 +5,12 @@ import { Input } from '../commonStyles/Input.styled'
 
 export const Filter = ({ value, onUpdateFilter }) => {
   return (
-      <Input
-        value={value}
-        type='text'
-        placeholder='Find contact'
-        onChange={event => onUpdateFilter(event.target.value)}
-      />
+    <Input
+      value={value}
+      type='text'
+      placeholder='Find contact'
+      onChange={event => onUpdateFilter(event.target.value)}
+    />
   )
 }
 

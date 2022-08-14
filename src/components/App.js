@@ -83,8 +83,10 @@ export default class App extends Component {
 
     return (
       <>
+        <h2>Phonebook</h2>
         <ContactsEditor onAddContact={this.addContact}></ContactsEditor>
 
+        <h2>Contacts</h2>
         <div>
           <Filter value={filter} onUpdateFilter={this.updateFilter} />
 
