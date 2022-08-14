@@ -25,12 +25,6 @@ export const ListItem = styled.li`
   }
 `
 
-// export const contactInfo = styled.p`
-// `
-
-// export const Checkbox = styled.input`
-// `
-
 export const DeleteButton = styled.button`
   cursor: pointer;
   color: ${props => props.theme.colors.warning};

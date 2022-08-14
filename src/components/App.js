@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { nanoid } from 'nanoid'
 
-// import initialContacts from './initialContacts.json'
 import { ContactsList } from './Contacts/ContactsList'
 import ContactsEditor from './ContactsEditor/ContactsEditor'
 import { Filter } from './Filter/Filter'
@@ -11,7 +10,6 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      // contacts: initialContacts,
       contacts: [],
       filter: ''
     }

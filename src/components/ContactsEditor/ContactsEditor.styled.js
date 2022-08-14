@@ -9,8 +9,6 @@ export const Form = styled.form`
   border-radius: ${props => props.theme.radii.sm};
 `
 
-// export const Title = styled.h2``
-
 export const Label = styled.label`
   cursor: pointer;
   font-size: ${props => props.theme.fontSizes[4]}px;

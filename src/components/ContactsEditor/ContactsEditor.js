@@ -16,9 +16,6 @@ export default class ContactsEditor extends Component {
     this.setState({
       [name]: value
     })
-
-    // console.log(event.target.name); //name, number
-    // console.log(event.target.value); //імя чи телефон, що вводимо
   }
 
   handleSubmit = event => {
