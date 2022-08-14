@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import { Form, Label, SubmitButton } from './ContactsEditor.styled'
+import { Input } from '../commonStyles/Input.styled'
+
 export default class ContactsEditor extends Component {
   state = {
     name: '',
@@ -30,11 +33,11 @@ export default class ContactsEditor extends Component {
     const { name, number } = this.state
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
         <h2>Phonebook</h2>
-        <label>
+        <Label>
           Name
-          <input
+          <Input
             type='text'
             name='name'
             value={name}
@@ -44,11 +47,11 @@ export default class ContactsEditor extends Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </label>
+        </Label>
 
-        <label>
+        <Label>
           Phone number
-          <input
+          <Input
             type='tel'
             name='number'
             value={number}
@@ -58,10 +61,10 @@ export default class ContactsEditor extends Component {
             title='Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
             required
           />
-        </label>
+        </Label>
 
-        <button type='submit'>Add contact</button>
-      </form>
+        <SubmitButton type='submit'>Add contact</SubmitButton>
+      </Form>
     )
   }
 }

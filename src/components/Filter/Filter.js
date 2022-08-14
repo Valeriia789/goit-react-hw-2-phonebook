@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { Input } from '../commonStyles/Input.styled'
+
 export const Filter = ({ value, onUpdateFilter }) => {
   return (
-    <div>
-      <input
+      <Input
         value={value}
         type='text'
         placeholder='Find contact'
         onChange={event => onUpdateFilter(event.target.value)}
       />
-    </div>
   )
 }
 

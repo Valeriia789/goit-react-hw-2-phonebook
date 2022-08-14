@@ -8,7 +8,7 @@ export const ContactsList = ({
   onUpdateContact
 }) => {
   return (
-    <div>
+    <>
       <h2>Contacts</h2>
       <ul>
         {contacts.map(contact => (
@@ -22,7 +22,7 @@ export const ContactsList = ({
           />
         ))}
       </ul>
-    </div>
+    </>
   )
 }
 

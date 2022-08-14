@@ -85,19 +85,21 @@ export default class App extends Component {
       <>
         <ContactsEditor onAddContact={this.addContact}></ContactsEditor>
 
-        <Filter value={filter} onUpdateFilter={this.updateFilter} />
-
-        {filteredContacts.length > 0 && (
-          <ContactsList
-            contacts={filteredContacts}
-            onDeleteContact={this.deleteContact}
-            onUpdateContact={this.updateGroup}
-          />
-        )}
-
         <div>
-          <p>Total contacts: {contacts.length}</p>
-          <p>Close friends: {closeFriendsGroup.length}</p>
+          <Filter value={filter} onUpdateFilter={this.updateFilter} />
+
+          {filteredContacts.length > 0 && (
+            <ContactsList
+              contacts={filteredContacts}
+              onDeleteContact={this.deleteContact}
+              onUpdateContact={this.updateGroup}
+            />
+          )}
+
+          <div>
+            <p>Total contacts: {contacts.length}</p>
+            <p>Close friends: {closeFriendsGroup.length}</p>
+          </div>
         </div>
       </>
     )

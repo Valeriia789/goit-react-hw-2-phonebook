@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { ListItem } from './ContactsListItem.styled'
+
 export const ContactsListItem = ({
   name,
   number,
@@ -8,7 +10,7 @@ export const ContactsListItem = ({
   onDelete,
   onUpdate
 }) => (
-  <li>
+  <ListItem>
     <p>
       {name} : {number}
     </p>
@@ -21,7 +23,7 @@ export const ContactsListItem = ({
     <button type='button' onClick={onDelete}>
       Delete
     </button>
-  </li>
+  </ListItem>
 )
 
 ContactsListItem.propTypes = {
