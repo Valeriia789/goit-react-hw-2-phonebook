@@ -23,3 +23,15 @@ export const ContactsListItem = ({
     </button>
   </li>
 )
+
+ContactsListItem.propTypes = {
+  onDelete: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+      group: PropTypes.bool.isRequired
+    })
+  )
+}

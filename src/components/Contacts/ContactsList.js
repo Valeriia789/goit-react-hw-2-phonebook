@@ -25,3 +25,16 @@ export const ContactsList = ({
     </div>
   )
 }
+
+ContactsList.propTypes = {
+  onDeleteContact: PropTypes.func.isRequired,
+  onUpdateContact: PropTypes.func.isRequired,
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      group: PropTypes.bool.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired
+    })
+  )
+}

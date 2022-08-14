@@ -65,3 +65,7 @@ export default class ContactsEditor extends Component {
     )
   }
 }
+
+ContactsEditor.propTypes = {
+  onAddContact: PropTypes.func.isRequired,
+}
