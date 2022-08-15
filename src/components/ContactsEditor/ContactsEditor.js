@@ -22,8 +22,6 @@ export default class ContactsEditor extends Component {
     event.preventDefault()
     this.props.onAddContact(this.state.name, this.state.number)
     this.setState({ name: '', number: '' })
-
-    console.log(this.state)
   }
 
   render () {
